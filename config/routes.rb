@@ -2,8 +2,11 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
   get "posts/:id" => 'posts#show', as: :post
-
+  get "posts/:id/click" => 'posts#click_post', as: :click_post
   post "posts/:id/comments" => "comments#create", as: :comments
+
+
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

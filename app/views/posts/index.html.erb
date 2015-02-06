@@ -2,7 +2,7 @@
 
 <% @posts.each do |post| %>
 
-  <h2><%= link_to post.title, post %></h2>
+  <h2><%= link_to post.title, click_post_path(post) %> -- <%= pluralize post.count, 'views' %></h2>
 
   <%= simple_format truncate(post.body, length: 200) %>
 
