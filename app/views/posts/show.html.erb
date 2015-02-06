@@ -1,0 +1,21 @@
+<h1><%= @post.title%></h1>
+
+<article>
+  <%= simple_format @post.body %>
+</article>
+
+<h2>Comments</h2>
+
+<% @post.comments.each do |comment| %>
+  <div class="comment">
+    Some asshat wrote the following at <%= distance_of_time_in_words(Time.now, comment.created_at)%> ago<br/>
+    <%= comment.message %>
+  </div>
+<% end %>
+
+<p>Add your voice here. Why? I literally have no idea</p>
+
+<%= form_for @comment do |f| %>
+  <%= f.text_area :message, class: "form-control" %>
+  <%= f.submit class: "btn btn-danger btn-lg" %>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>Articles</h1>
+
+<% @posts.each do |post| %>
+
+  <h2><%= link_to post.title, post %></h2>
+
+  <%= simple_format truncate(post.body, length: 200) %>
+
+<% end %>
