@@ -1,9 +1,17 @@
 <h1>Articles</h1>
 
+<%= form_tag root_path, method: :get do %>
+  <%= text_field_tag :search_text %>
+  <%= submit_tag "Search", class: "btn btn-default" %>
+<% end %>
+
+You searched for: <em><%= params[:search_text] %></em>.
+
+
 <% @posts.each do |post| %>
 
-  <h2><%= link_to post.title, click_post_path(post) %> -- <%= pluralize post.count, 'views' %></h2>
+  <h2><%= link_to highlight(post.title, params[:search_text]), click_post_path(post) %> -- <%= pluralize post.count, 'views' %></h2>
 
-  <%= simple_format truncate(post.body, length: 200) %>
+  <%= simple_format truncate(highlight(post.body, params[:search_text]), length: 200) %>
 
 <% end %>

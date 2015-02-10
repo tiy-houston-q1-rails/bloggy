@@ -44,3 +44,4 @@ end
 gem 'faker'
 gem 'bootstrap-sass'
 gem 'rails_12factor'
+gem 'pg_search'

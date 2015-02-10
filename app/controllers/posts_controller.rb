@@ -2,7 +2,11 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.order("count DESC")
+    if params[:search_text].present?
+      @posts = Post.search(params[:search_text]).order("count DESC")
+    else
+      @posts = Post.all.order("count DESC")
+    end
   end
 
   def show
