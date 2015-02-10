@@ -10,8 +10,10 @@ You searched for: <em><%= params[:search_text] %></em>.
 
 <% @posts.each do |post| %>
 
-  <h2><%= link_to highlight(post.title, params[:search_text]), click_post_path(post) %> -- <%= pluralize post.count, 'views' %></h2>
+  <h2><%= link_to highlight(post.title, params[:search_text]), click_post_path(post) %> <small><%= link_to "Edit", edit_post_path(post) %></small></h2>
 
   <%= simple_format truncate(highlight(post.body, params[:search_text]), length: 200) %>
+
+  Tagged with: <%= raw post.tags.map {|tag| link_to tag.name, tag_path(name: tag.name) }.join(", ") %>
 
 <% end %>

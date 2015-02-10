@@ -1,0 +1,8 @@
+EDIT
+
+<%= simple_form_for @post do |f| %>
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.input :tag_list, input_html: {value: @post.tag_list.to_s} %>
+  <%= f.submit class: "btn btn-primary btn-lg" %>
+<% end %>

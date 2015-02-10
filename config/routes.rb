@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root to: "posts#index"
   get "posts/:id" => 'posts#show', as: :post
+  get "posts/:id/edit" => 'posts#edit', as: :edit_post
+  patch "posts/:id" => 'posts#update'
   get "posts/:id/click" => 'posts#click_post', as: :click_post
   post "posts/:id/comments" => "comments#create", as: :comments
-
+  get "/tagged/:name" => "posts#tag", as: :tag
 
 
 
